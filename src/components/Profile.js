@@ -6,19 +6,36 @@ import './profile.css';
 
 const Profile = () => {
   const { user, fetchUser, updateUser } = useAuth();
-  const [username, setUsername] = useState(user?.username || '');
-  const [email, setEmail] = useState(user?.email || '');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [age, setAge] = useState(user?.age || '');
-  const [dob, setDob] = useState(user?.dob ? user.dob.split('T')[0] : ''); 
-  const [contact, setContact] = useState(user?.contact || '');
-  const [gender, setGender] = useState(user?.gender || ''); 
+  const [age, setAge] = useState('');
+  const [dob, setDob] = useState(''); 
+  const [contact, setContact] = useState('');
+  const [gender, setGender] = useState(''); 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+  // Fetch user data and set state
+  const initializeUserData = async () => {
+    try {
+      await fetchUser(); // Fetch user data
+      if (user) {
+        setUsername(user.username || '');
+        setEmail(user.email || '');
+        setAge(user.age || '');
+        setDob(user.dob ? user.dob.split('T')[0] : '');
+        setContact(user.contact || '');
+        setGender(user.gender || '');
+      }
+    } catch (error) {
+      setErrorMessage('Failed to fetch user data.');
+    }
+  };
+
   useEffect(() => {
-    fetchUser();
+    initializeUserData();
   }, []);
 
   const handleUpdate = async (e) => {
@@ -33,9 +50,9 @@ const Profile = () => {
         gender,
         password
       };
-      console.log('User data being sent:', userData); // Check this
-      await updateUser(userData); // Pass the userData object
-      fetchUser(); // Refresh user data
+      console.log('User data being sent:', userData); 
+      await updateUser(userData); 
+      await fetchUser(); 
       setSuccessMessage('Profile updated successfully!');
       setTimeout(() => setSuccessMessage(''), 3000);
 

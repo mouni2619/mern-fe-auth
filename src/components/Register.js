@@ -21,7 +21,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
+    <div className="register-container pt-3">
       <div className="register-card">
         <h2>Register</h2>
         <form onSubmit={handleSubmit} className="register-form">
@@ -31,7 +31,7 @@ const Register = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="form-input"
+            className="form-input mb-2"
           />
           <input
             type="email"
@@ -39,7 +39,7 @@ const Register = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="form-input"
+            className="form-input mb-2"
           />
           <input
             type="password"
@@ -47,33 +47,33 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="form-input"
+            className="form-input mb-2"
           />
           <input
             type="text"
             placeholder="Age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            className="form-input"
+            className="form-input mb-2"
           />
           <input
             type="date"
             placeholder="Date of Birth"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
-            className="form-input"
+            className="form-input mb-2"
           />
           <input
             type="text"
             placeholder="Contact"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
-            className="form-input"
+            className="form-input mb-2"
           />
           <select
             value={gender}
             onChange={(e) => setGender(e.target.value)}
-            className="form-input"
+            className="form-input mb-2"
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
