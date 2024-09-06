@@ -1,0 +1,117 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    /* background-image: url("https://cdn.pixabay.com/animation/2023/07/19/21/01/21-01-15-870_512.gif"); */
+  }
+  
+  .register-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+
+  h2 {
+    margin-bottom: 20px;
+    color: #6c50af;
+    font-size: 2.5em; 
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive; 
+    position: relative;
+    display: inline-block;
+    text-shadow: 1px 1px 0 #d0d9ee, 
+                 2px 2px 0 #869eec, 
+                 3px 3px 0 #8f7ef3; 
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .register-button {
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-button:hover {
+    background: linear-gradient(135deg, #bcbce9, #5b5fa1);
+  }
+  
+  .login-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .register-card {
+      padding: 30px;
+    }
+  
+    .form-input {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .register-button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .register-card {
+      padding: 20px;
+    }
+  
+    .form-input {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .register-button {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
