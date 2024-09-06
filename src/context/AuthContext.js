@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
+const API="https://mern-be-auth.onrender.com"
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -9,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const { data } = await axios.post('http://localhost:5000/api/users/login', { username, password });
+      const { data } = await axios.post(`${API}/api/users/login`, { username, password });
       setToken(data.token);
       localStorage.setItem('token', data.token);
       fetchUser();
@@ -20,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, email, password, age, dob, contact, gender) => {
     try {
-      await axios.post('http://localhost:5000/api/users/register', { username, email, password, age, dob, contact, gender });
+      await axios.post(`${API}/api/users/register`, { username, email, password, age, dob, contact, gender });
     } catch (error) {
       console.error(error);
     }
@@ -31,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       const storedToken = localStorage.getItem('token'); 
       // console.log('Fetched token:', storedToken);
   
-      const { data } = await axios.get('http://localhost:5000/api/users/me', {
+      const { data } = await axios.get(`${API}/api/users/me`, {
         headers: { 'Authorization': `Bearer ${storedToken}` }
       });
   
@@ -47,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   const updateUser = async (userData) => {
     // console.log('Sending user data for update:', userData); 
     try {
-      const response = await axios.put('http://localhost:5000/api/users/update', userData, {
+      const response = await axios.put(`${API}/api/users/update`, userData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
