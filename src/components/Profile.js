@@ -15,29 +15,36 @@ const Profile = () => {
   const [gender, setGender] = useState(''); 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
-
-  // Fetch user data and set state
-  const initializeUserData = async () => {
-    try {
-      await fetchUser(); // Fetch user data
-      if (user) {
-        setUsername(user.username || '');
-        setEmail(user.email || '');
-        setAge(user.age || '');
-        setDob(user.dob ? user.dob.split('T')[0] : '');
-        setContact(user.contact || '');
-        setGender(user.gender || '');
-      }
-    } catch (error) {
-      setErrorMessage('Failed to fetch user data.');
-    }
-  };
-
   useEffect(() => {
+    const initializeUserData = async () => {
+      try {
+        // console.log('Fetching user data...');
+        await fetchUser(); 
+        setLoading(false);
+      } catch (error) {
+        // console.error('Error fetching user data:', error);
+        setErrorMessage('Failed to fetch user data.');
+        setLoading(false);
+      }
+    };
+
     initializeUserData();
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      // console.log('User data:', user);
+      setUsername(user.username || '');
+      setEmail(user.email || '');
+      setAge(user.age || '');
+      setDob(user.dob ? user.dob.split('T')[0] : '');
+      setContact(user.contact || '');
+      setGender(user.gender || '');
+    }
+  }, [user]);
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
